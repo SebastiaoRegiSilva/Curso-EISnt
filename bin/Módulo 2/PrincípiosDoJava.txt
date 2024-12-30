@@ -1,0 +1,6 @@
+Princípios do JAVA.
+1. Orientação a objetos:
+2. Portabilidade:
+3. Segurança:
+4. Simplicidade:
+5. Interligação:
