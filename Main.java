@@ -3,50 +3,35 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int opcao;
 
-        do {
-            System.out.println("===== MENU DE BEBIDAS =====");
-            System.out.println("1 - Água");
-            System.out.println("2 - Cerveja");
-            System.out.println("3 - Vinho");
-            System.out.println("4 - Frisante");
-            System.out.println("5 - Sangria");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
+        int[][] tabuleiro = new int[5][5];
+        int totalNumeros = tabuleiro.length * tabuleiro[0].length, maior = Integer.MIN_VALUE, menor = Integer.MAX_VALUE, linhaMaior = -1, colunaMaior = -1, linhaMenor = -1, colunaMenor = -1;
 
-            while (!scanner.hasNextInt()) {
-                System.out.println("Por favor, insira um número válido.");
-                scanner.next();
-                System.out.print("Escolha uma opção: ");
+        System.out.println("Por favor, siga as próximas instruções para preenchimento do tabuleiro de números.");
+        System.out.println("Você precisa inserir " + totalNumeros + " números.");
+
+        // Criação do tabuleiro.
+        for (int i = 0; i < tabuleiro.length; i++) {
+            for (int j = 0; j < tabuleiro[i].length; j++) {
+                System.out.println("Faltam " + (totalNumeros--) + " números para preencher o tabuleiro.");
+                System.out.print("Insira um valor para a posição [" + i + "][" + j + "]: ");
+                tabuleiro[i][j] = scanner.nextInt();
+                
+                if(tabuleiro[i][j] > maior){
+                    maior = tabuleiro[i][j];
+                    linhaMaior = i;
+                    colunaMaior = j;
+                }else{
+                    menor = tabuleiro[i][j];
+                    linhaMenor = i;
+                    colunaMenor = j;
+                }
             }
+        }
 
-            opcao = scanner.nextInt();
-            switch (opcao) {
-                case 1:
-                    System.out.println("Você escolheu Água.");
-                    break;
-                case 2:
-                    System.out.println("Você escolheu Cerveja.");
-                    break;
-                case 3:
-                    System.out.println("Você escolheu Vinho.");
-                    break;
-                case 4:
-                    System.out.println("Você escolheu Frisante.");
-                    break;
-                case 5:
-                    System.out.println("Você escolheu Sangria.");
-                    break;
-                case 0:
-                    System.out.println("Saindo do menu. Até a próxima!");
-                    break;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
-            }
-            System.out.println();
-        } while (opcao != 0);
-
+        System.out.println(String.format("O maior valor é: %d e está linha: %d e coluna: %d", maior, linhaMaior, colunaMaior));
+        System.out.println(String.format("O menor valor é: %d e está linha: %d e coluna: %d", menor, linhaMenor, colunaMenor));
+        
         scanner.close();
     }
 }
