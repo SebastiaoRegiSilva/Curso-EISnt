@@ -1,37 +1,53 @@
-import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Multiplicacao();
+        Soma();
+    }
 
-        int[][] tabuleiro = new int[5][5];
-        int totalNumeros = tabuleiro.length * tabuleiro[0].length, maior = Integer.MIN_VALUE, menor = Integer.MAX_VALUE, linhaMaior = -1, colunaMaior = -1, linhaMenor = -1, colunaMenor = -1;
+    /**
+     * Gerar valores aleatórios para operações na aplicação.
+     * 
+     * @return
+     *         Valores inteiros entre 1 e 50.
+     */
+    static int GerarAleatorio() {
+        Random generator = new Random();
 
-        System.out.println("Por favor, siga as próximas instruções para preenchimento do tabuleiro de números.");
-        System.out.println("Você precisa inserir " + totalNumeros + " números.");
+        return generator.nextInt(50) +1;
+    }
 
-        // Criação do tabuleiro.
-        for (int i = 0; i < tabuleiro.length; i++) {
-            for (int j = 0; j < tabuleiro[i].length; j++) {
-                System.out.println("Faltam " + (totalNumeros--) + " números para preencher o tabuleiro.");
-                System.out.print("Insira um valor para a posição [" + i + "][" + j + "]: ");
-                tabuleiro[i][j] = scanner.nextInt();
-                
-                if(tabuleiro[i][j] > maior){
-                    maior = tabuleiro[i][j];
-                    linhaMaior = i;
-                    colunaMaior = j;
-                }else{
-                    menor = tabuleiro[i][j];
-                    linhaMenor = i;
-                    colunaMenor = j;
-                }
-            }
-        }
-
-        System.out.println(String.format("O maior valor é: %d e está linha: %d e coluna: %d", maior, linhaMaior, colunaMaior));
-        System.out.println(String.format("O menor valor é: %d e está linha: %d e coluna: %d", menor, linhaMenor, colunaMenor));
+    /**
+     * Impressão da resutado da multiplicação dos aletatórios.
+     */
+    static void Multiplicacao(){
         
-        scanner.close();
+        int valorCompostoMultiplo = 1;
+        System.out.println("Números gerados:");
+        for (int i = 1; i <= 3; i++) {
+            int aleatorio = GerarAleatorio();
+            valorCompostoMultiplo *= aleatorio;
+            System.out.println(i + ":" + aleatorio);
+        }
+        System.out.println("Fim.");
+
+        System.out.println("Resultado da multiplicação dos aleatórios é: " + valorCompostoMultiplo + "!\n");
+    }
+
+    /**
+     * Impressão da resutado da soma dos aletatórios.
+     */
+    static void Soma(){
+        int valorCompostoSoma = 0;
+        System.out.println("Números gerados:");
+        for (int i = 1; i <= 3; i++) {
+            int aleatorio = GerarAleatorio();
+            valorCompostoSoma += aleatorio;
+            System.out.println(i + ":" + aleatorio);
+        }
+        System.out.println("FIM.");
+
+        System.out.println("Resultado da soma dos aleatórios é: " + valorCompostoSoma + "!");
     }
 }
