@@ -6,27 +6,24 @@ public class Main {
         Soma();
     }
 
-    /**
-     * Gerar valores aleatórios para operações na aplicação.
-     * 
-     * @return
-     *         Valores inteiros entre 1 e 50.
-     */
-    static int GerarAleatorio() {
+    static int[] GerarAleatorio() {
+        int[] numerosGerados = new int[3];
         Random generator = new Random();
 
-        return generator.nextInt(50) +1;
+        for (int i = 0; i < numerosGerados.length; i++) {
+            numerosGerados[i] = generator.nextInt(50) + 1;
+        }
+
+        return numerosGerados;
     }
 
-    /**
-     * Impressão da resutado da multiplicação dos aletatórios.
-     */
-    static void Multiplicacao(){
-        
+    static void Multiplicacao() {
+
         int valorCompostoMultiplo = 1;
         System.out.println("Números gerados:");
-        for (int i = 1; i <= 3; i++) {
-            int aleatorio = GerarAleatorio();
+
+        for (int i = 0; i < GerarAleatorio().length; i++) {
+            int aleatorio = GerarAleatorio()[i];
             valorCompostoMultiplo *= aleatorio;
             System.out.println(i + ":" + aleatorio);
         }
@@ -35,14 +32,11 @@ public class Main {
         System.out.println("Resultado da multiplicação dos aleatórios é: " + valorCompostoMultiplo + "!\n");
     }
 
-    /**
-     * Impressão da resutado da soma dos aletatórios.
-     */
-    static void Soma(){
+    static void Soma() {
         int valorCompostoSoma = 0;
         System.out.println("Números gerados:");
-        for (int i = 1; i <= 3; i++) {
-            int aleatorio = GerarAleatorio();
+        for (int i = 0; i < GerarAleatorio().length; i++) {
+            int aleatorio = GerarAleatorio()[i];
             valorCompostoSoma += aleatorio;
             System.out.println(i + ":" + aleatorio);
         }
